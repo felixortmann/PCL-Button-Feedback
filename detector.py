@@ -12,7 +12,7 @@ import math
 import threading
 import time
 
-port = 'COM4'  # change port if not COM4
+port = 'COM3'  # change port if not COM4
 baudrate = 115200
 
 # stores the index of the selected emoji
@@ -39,10 +39,13 @@ def thread_function():
             while True:
                 signal = arduino.readline()
                 print(signal)
-                s = signal.replace('\r', '')
-                s = s.replace('\n', '')
-                res = s.split("'")[1]
-                print(res)
+                
+                decoded_signal = signal.decode("utf-8")
+                decoded_signal = decoded_signal.replace("\r\n","")
+    
+                res = decoded_signal
+                
+                
                 global imgindex
                 if res == "happy":
                     imgindex = 0

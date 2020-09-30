@@ -15,20 +15,17 @@ import time
 port = 'COM4'  # change port if not COM4
 baudrate = 115200
 
-signal = "b'happy\r\n'"
-
 # stores the index of the selected emoji
 imgindex = 0
 
 
 # signals: e.g. b'angry\r\n'
-def evalSignal():
+def evalSignal(signal):
     s = signal
     x = s.replace('\r', '')
     y = x.replace('\n', '')
 
     res = y.split("'")[1]
-    print(res)
 
     return res
 
@@ -38,13 +35,14 @@ def thread_function():
         print("Connection successful!")
 
         try:
-
+            signal = "b'happy\r\n'"
             while True:
                 s = arduino.readline()
                 signal = s
                 print(s)
-                res = evalSignal()
+                res = evalSignal(signal)
                 print(res)
+                global imgindex
                 if res == "happy":
                     imgindex = 0
                 elif res == "sad":
@@ -53,6 +51,7 @@ def thread_function():
                     imgindex = 2
                 time.sleep(1)
                 global stop_threads
+                stop_threads = False
                 if stop_threads:
                     break
 

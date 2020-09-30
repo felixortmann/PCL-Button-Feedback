@@ -37,10 +37,11 @@ def thread_function():
         try:
             signal = "b'happy\r\n'"
             while True:
-                s = arduino.readline()
-                signal = s
-                print(s)
-                res = evalSignal(signal)
+                signal = arduino.readline()
+                print(signal)
+                s = signal.replace('\r', '')
+                s = s.replace('\n', '')
+                res = s.split("'")[1]
                 print(res)
                 global imgindex
                 if res == "happy":

@@ -12,6 +12,8 @@ import math
 import threading
 import time
 
+import serial
+
 port = 'COM3'  # change port if not COM4
 baudrate = 115200
 
@@ -38,7 +40,7 @@ def thread_function():
             signal = "b'happy\r\n'"
             while True:
                 signal = arduino.readline()
-                print(signal)
+                #print(signal)
                 
                 decoded_signal = signal.decode("utf-8")
                 decoded_signal = decoded_signal.replace("\r\n","")
@@ -53,7 +55,7 @@ def thread_function():
                     imgindex = 1
                 elif res == "angry":
                     imgindex = 2
-                time.sleep(1)
+                #time.sleep(1)
                 global stop_threads
                 stop_threads = False
                 if stop_threads:
@@ -220,7 +222,7 @@ while(True):
         continue
 
 # When everything done, release the capture
-stop_threads=True
-x.join()
 cap.release()
 cv2.destroyAllWindows()
+stop_threads=True
+x.join()

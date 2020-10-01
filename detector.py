@@ -195,11 +195,11 @@ while(True):
     if k == ord('q'):
         break
     elif k == ord('h'):
-        imgindex = 0
-    elif k == ord('s'):
         imgindex = 1
-    elif k == ord('a'):
+    elif k == ord('s'):
         imgindex = 2
+    elif k == ord('a'):
+        imgindex = 3
     else:
         continue
 

@@ -18,18 +18,7 @@ port = 'COM3'  # change port if not COM4
 baudrate = 115200
 
 # stores the index of the selected emoji
-imgindex = 0
-
-
-# signals: e.g. b'angry\r\n'
-def evalSignal(signal):
-    s = signal
-    x = s.replace('\r', '')
-    y = x.replace('\n', '')
-
-    res = y.split("'")[1]
-
-    return res
+imgindex = -1
 
 def thread_function():
     try:
@@ -47,15 +36,8 @@ def thread_function():
     
                 res = decoded_signal
                 
-                
                 global imgindex
-                if res == "happy":
-                    imgindex = 0
-                elif res == "sad":
-                    imgindex = 1
-                elif res == "angry":
-                    imgindex = 2
-                #time.sleep(1)
+                imgindex = int(res)
                 global stop_threads
                 stop_threads = False
                 if stop_threads:
@@ -158,14 +140,14 @@ while(True):
     
     # TODO add emoji selection (maybe Arduino buttons?)
     # TODO add emoji selection with keyboard numbers
-    if imgindex == 0:
+    if imgindex == 1:
         img_emoji=img_emojihappy
-    elif imgindex == 1:
-        img_emoji=img_emojisad
     elif imgindex == 2:
+        img_emoji=img_emojisad
+    elif imgindex == 3:
         img_emoji=img_emojiangry
     
-    if len(res[0]) > 0:
+    if len(res[0]) > 0 and imgindex != -1:
         
         
         for marker in res[0]:

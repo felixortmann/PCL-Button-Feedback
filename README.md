@@ -39,3 +39,6 @@ auswählen und starten. Das wird der Name für die Videokonferenzen sein.
 8. Beliebiges Videokonferenzsoftware öffnen und als Webcam OBS-Camera auswählen, z.B. BBB.
 
     ![](readme%20images/bbb.PNG)
+    
+9. Nach dem Schließen von OBS muss für eine erneute Anwendung die Virtual Camera unter Filter der Fensteraufnahme erneut
+gestartet werden.

@@ -37,6 +37,8 @@ auswählen und starten. Das wird der Name für die Videokonferenzen sein.
     ![](readme%20images/obscam1.PNG)
     
 8. Beliebiges Videokonferenzsoftware öffnen und als Webcam OBS-Camera auswählen, z.B. BBB.
+    * **Hinweis**: Sollte sich OBS-Camera nicht in den Videokonferenzen finden, muss eventuell ein PC neustart durchgeführt
+    werden. OBS oder ein Browser Neustart oder das wechseln des Browsers könnte auch bereits genügen. 
 
     ![](readme%20images/bbb.PNG)
     
